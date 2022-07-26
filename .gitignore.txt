@@ -1,0 +1,2 @@
+# Ignore Saved Data
+employees.txt

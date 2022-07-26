@@ -59,14 +59,14 @@ namespace MTechTest2
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            //Obtención de Datos de Formularios
+            //Getting Data Through Forms
             string name = textBoxName.Text;
             string lastName = textBoxLastName.Text;
             string rfc = textBoxRFC.Text;
             DateTime bornDate = dateTimePickerBornDate.Value;
             int status = comboBoxStatus.SelectedIndex;
 
-            //Validación de RFC Mediante Regex
+            //RFC Regex Validation
             Regex rx = new Regex(@"^([A-ZÑ&]{3,4})(?:- )?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01]))(?:- )?([A-Z\d]{2})([A\d])$");
 
             //First Coincidence by RFC
