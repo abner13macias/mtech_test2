@@ -1,0 +1,14 @@
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\bin\Debug\MTechTest2.exe.config
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\bin\Debug\MTechTest2.exe
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\bin\Debug\MTechTest2.pdb
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.csproj.AssemblyReference.cache
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.Properties.Resources.resources
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.csproj.GenerateResource.cache
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.exe
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.pdb
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.EmployeesMenu.resources
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Usuario\source\repos\abner13macias\mtech_test2\MTechTest2\obj\Debug\MTechTest2.csproj.CopyComplete

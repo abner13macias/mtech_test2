@@ -1,0 +1,2 @@
+{"Id":0,"Name":"Abner","LastName":"Macias","RFC":"DIMA980513IQ7","BornDate":"2022-07-05T18:33:14","Status":1}
+{"Id":0,"Name":"sa","LastName":"a","RFC":"DIMA980513IQ8","BornDate":"2022-07-26T18:46:54.1810461-05:00","Status":1}
