@@ -220,6 +220,7 @@
             // textBoxRFC
             // 
             this.textBoxRFC.Location = new System.Drawing.Point(161, 141);
+            this.textBoxRFC.MaxLength = 13;
             this.textBoxRFC.Name = "textBoxRFC";
             this.textBoxRFC.Size = new System.Drawing.Size(226, 20);
             this.textBoxRFC.TabIndex = 6;

@@ -1,3 +1,2 @@
-{"Id":1,"Name":"Amber","LastName":"Mac","RFC":"DIMA980513IQ7","BornDate":"2022-07-26T21:02:47.4374389-05:00","Status":1}
-{"Id":2,"Name":"Ivan","LastName":"Lara","RFC":"DIMA980612IQ1","BornDate":"2021-09-14T21:03:02","Status":2}
-{"Id":3,"Name":"AAAAY","LastName":"WEEEY","RFC":"DIMA980621IQ3","BornDate":"2022-07-29T21:03:25","Status":0}
+{"Id":1,"Name":"Amber","LastName":"Mac","RFC":"DIMA980513IQ7","BornDate":"1998-05-13T21:06:14","Status":1}
+{"Id":2,"Name":"Ivan","LastName":"Lara","RFC":"DIMA980521IQ5","BornDate":"2002-10-12T21:06:50","Status":0}
