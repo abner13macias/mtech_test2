@@ -22,29 +22,47 @@ namespace MTechTest2
         }
 
         //List of Employees stored on File
-        private List<Employee> employees = new List<Employee>();
+        private BindingList<Employee> employees = new BindingList<Employee>();
 
         //Path to Employees File
         string txtFile = @"data/employees.txt";
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Opening the file for reading
+            try
+            {
+                //Reading Each Line of TXT File
+                using (StreamReader sr = File.OpenText(txtFile))
+                {
+                    string s = "";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        //Deserializing JSON to Object
+                        Employee em = JsonConvert.DeserializeObject<Employee>(s);
+                        employees.Add(em);
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //File Doesn't Exist
+                var myFile = File.Create(txtFile);
+                myFile.Close();
+            }
+
+            //Set ComboBox Items
             comboBoxStatus.Items.Clear();
             comboBoxStatus.Items.Insert(0, "NotSet");
             comboBoxStatus.Items.Insert(1, "Active");
             comboBoxStatus.Items.Insert(2, "Inactive");
 
-            // Opening the file for reading
-            using (StreamReader sr = File.OpenText(txtFile))
-            {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                    //Deserializing JSON to Object
-                    Employee em = JsonConvert.DeserializeObject<Employee>(s);
-                    employees.Add(em);
-                }
-            }
+            //Order by Born Date
+            //Set Employees List as DataSource
+            dataGridViewEmployees.DataSource = new BindingList<Employee>(this.employees.OrderBy(x => x.BornDate).ToList());
+
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
@@ -115,6 +133,15 @@ namespace MTechTest2
                         break;
                 }
 
+                //ID Assignment
+                int lastID = 0;
+                if (employees.Count > 0)
+                {
+                    lastID = employees[employees.Count - 1].Id;
+                }
+                lastID++;
+                employee.Id = lastID;
+
                 //JSON Serializing with NewtonSoft Librarie
                 string jsonEmployee = JsonConvert.SerializeObject(employee);
 
@@ -126,14 +153,30 @@ namespace MTechTest2
                         writer.WriteLine(jsonEmployee);
                     }
 
-                    MessageBox.Show("Employee Saved.", "Success!", MessageBoxButtons.OK);
+                    DialogResult result = MessageBox.Show("Employee Saved.", "Success!", MessageBoxButtons.OK);
 
                     //Update Employees List
                     this.employees.Add(employee);
+
+                    //Order List By Born Date
+                    dataGridViewEmployees.DataSource = new BindingList<Employee>(this.employees.OrderBy(x => x.BornDate).ToList());
+
+                    //Clean Elements
+                    if (result == DialogResult.OK)
+                    {
+                        textBoxName.Text = "";
+                        textBoxLastName.Text = "";
+                        textBoxRFC.Text = "";
+                        dateTimePickerBornDate.Value = DateTime.Now;
+                        comboBoxStatus.SelectedIndex = -1;
+                    }
+
+                    //Switch to Previous Tab
+                    tabEmployees.SelectedTab = tabPageEmployees;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error Saving Employee Data.", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK);
                 }
             }
 
@@ -142,7 +185,15 @@ namespace MTechTest2
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //Clean Elements
+            textBoxName.Text = "";
+            textBoxLastName.Text = "";
+            textBoxRFC.Text = "";
+            dateTimePickerBornDate.Value = DateTime.Now;
+            comboBoxStatus.SelectedIndex = -1;
+
+            //Switch to Previous Tab
+            tabEmployees.SelectedTab = tabPageEmployees;
         }
 
         private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,6 +204,45 @@ namespace MTechTest2
         private void tabNewEmployee_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string searchName = textBoxSearchName.Text;
+            //If we wrote something, we filter, otherwise, reset de DataSource
+            if (searchName.Length > 0)
+                filterEmployees(searchName);
+            else
+                resetEmployees();
+        }
+
+        private void textBoxSearchName_KeyUp(object sender, KeyEventArgs e)
+        {
+            //Only Filter When Enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                string searchName = textBoxSearchName.Text;
+                //If we wrote something, we filter, otherwise, reset de DataSource
+                if (searchName.Length > 0)
+                    filterEmployees(searchName);
+                else
+                    resetEmployees();
+            }
+        }
+
+        private void filterEmployees(string searchName)
+        {
+            //Employees Lisit Filtered By Name
+            BindingList<Employee> filteredBindingList = new BindingList<Employee>(employees.Where(emp => emp.Name.ToLower() == searchName.ToLower()).ToList());
+
+            //Set Filtered List as DataSource
+            dataGridViewEmployees.DataSource = filteredBindingList;
+        }
+
+        private void resetEmployees()
+        {
+            //Set Original List as DataSource
+            dataGridViewEmployees.DataSource = employees;
         }
     }
 }
